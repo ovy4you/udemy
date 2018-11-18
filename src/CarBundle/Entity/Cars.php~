@@ -1,0 +1,167 @@
+<?php
+
+namespace CarBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Car
+ *
+ * @ORM\Table(name="car")
+ * @ORM\Entity(repositoryClass="CarBundle\Repository\CarsRepository")
+ */
+class Cars
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Model", inversedBy="cars")
+     */
+    private $model;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="CarBundle\Entity\Make", inversedBy="cars")
+     */
+    private $make;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="navigation", type="boolean")
+     */
+    private $navigation;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="promote", type="boolean")
+     */
+    private $promote;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Car
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set navigation
+     *
+     * @param \bool $navigation
+     *
+     * @return Car
+     */
+    public function setNavigation(\bool $navigation)
+    {
+        $this->navigation = $navigation;
+
+        return $this;
+    }
+
+    /**
+     * Get navigation
+     *
+     * @return \bool
+     */
+    public function getNavigation()
+    {
+        return $this->navigation;
+    }
+
+    /**
+     * Set model
+     *
+     * @param \CarBundle\Entity\Model $model
+     *
+     * @return Cars
+     */
+    public function setModel(\CarBundle\Entity\Model $model = null)
+    {
+        $this->model = $model;
+
+        return $this;
+    }
+
+    /**
+     * Get model
+     *
+     * @return \CarBundle\Entity\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * Set make
+     *
+     * @param \CarBundle\Entity\Make $make
+     *
+     * @return Cars
+     */
+    public function setMake(\CarBundle\Entity\Make $make = null)
+    {
+        $this->make = $make;
+
+        return $this;
+    }
+
+    /**
+     * Get make
+     *
+     * @return \CarBundle\Entity\Make
+     */
+    public function getMake()
+    {
+        return $this->make;
+    }
+
+}

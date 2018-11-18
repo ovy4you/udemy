@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ parent() }} - ovidiu!{% endblock %}
+{% block body %}
+    <table>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car.make.name }}</td>
+                <td> {{ car.model.name }}</td>
+                <td><a href="{{ path('car_show',{id:car.id}) }}">show car</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
